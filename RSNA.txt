@@ -1,0 +1,466 @@
+
+##标有两个#的是错误或无意义的尝试
+#标有一个#的是有必要的数据观察与描述性统计
+
+﻿##############################################################
+#							     #
+#							     #
+#                    数据探索、初步处理			     #
+#							     #
+#							     #
+##############################################################
+
+##food<-read.csv("/home/hans/文档/FoodBalanceSheets_E_All_Data_(Normalized).csv")
+##colnames(food)<-food[1,]
+##food<-food[-1,]
+##summary(food)
+##head(food)
+##rm("food")
+  food<-read.csv("/home/hans/文档/FoodBalanceSheets_E_All_Data_(Normalized).csv", header = T)
+# head(food)
+# summary(food)
+# food[food$Year.Code!=food$Year,]
+##q()
+##ls()
+  food<-food[,-c(1,3,5,7)]
+##summary(food)
+# unique(food$Area)
+##head(food[food$Area=="World"])
+# head(food[food$Area=="World",])
+# foodsum<-food[9068420:nrow(food),]
+##summary(foodsun$Area)
+# unique(foodsum$Area)
+##unique(food$Area)==unique(foodsum$Area)
+##unique(food$Area)[-34]==unique(foodsum$Area)
+##unique(food$Area)[length(unique(food$Area))-34:length(unique(food$Area))]==unique(foodsum$Area)
+##unique(food$Area)[length(unique(food$Area))-34:length(unique(food$Area))]
+##unique(food$Area)[(length(unique(food$Area))-34):length(unique(food$Area))]==unique(foodsum$Area)
+##unique(food$Area)[(length(unique(food$Area))-34):length(unique(food$Area))]
+# unique(food$Area)[(length(unique(food$Area))-33):length(unique(food$Area))]==unique(foodsum$Area)
+  food<-food[-(9068420:nrow(food)),]
+##summary(food)
+##food[food$Flag=="SD",]
+# summary(food[food$Flag=="SD",])
+##levels(food$Area)
+##food<-food[,food$Area]
+##food<-data.frame(food,food$Area)
+# colnames(food)
+# summary(food)
+##levels(food$food.Area)<-unique(as.character(food$Area))
+##unique(as.character(food$Area))
+##food$food.Area<-factor(as.character(food$food.Area)
+##levels(food$food.Area)
+##q()
+# head(food)
+##runif(2)
+##set.seed(1)
+##food[floor(runif(10)*nrow(food)),]
+##food[floor(runif(5)*nrow(food)),]
+##colnames(food)
+##colnames(foodsum)
+##food<-food[,-8]
+##colnames(food)
+##food[floor(runif(10)*nrow(food)),]
+# summary(food$Element)
+  library(data.table)
+##colnames(food)
+# summary(food$U)
+# summary(food$I)
+##table(unique(food$I)))
+##table(unique(food$I))
+##head(table(unique(food$I)))
+# length(table(unique(food$I)))
+##table(food$I)
+##order(table(food$I))
+##sort(table(food$I))
+# head(sort(table(food$I)))
+##colnames(food)
+##head(food)
+# length(table(unique(food$I)))
+# length(table(unique(food$e)))
+# length(table(unique(food$E)))
+# table(unique(food$E))
+# table(unique(food[Item=='Population',Elements]))
+# table(unique(food[Item=='Population',Element]))
+# table(unique(food$E[food$Item=='Population']))
+# table(unique(food$E[food$Item==unique(food$Item)[1]]))
+# table(unique(food$E[food$Item==unique(food$Item)[2]]))
+# table(unique(food$E[food$Item==unique(food$Item)[3]]))
+# table(unique(food$E[food$Item==unique(food$Item)[4]]))
+# table(unique(food$E[food$Item==unique(food$Item)[5]]))
+##colnames(food)
+##head(food)
+##length(table(unique(food$A)))
+##library(reshape2)
+##colnames(food)
+##meltfood<-melt(food,id="","")
+##food<-food[,-8]
+##meltfood<-melt(food,id="Area","Year")
+##nrow(food)
+##nrow(meltrfood)
+##nrow(meltfood)
+##colnames(meltfood)
+##head(meltfood)
+##summary(meltfood)
+##rm(meltfood)
+##meltfood<-melt(food,id=c("Area","Year"))
+##head(meltfood)
+##nrow(meltfood)
+##dacstfood<-dcast(food,Area+Year~Item+Element+Unit)
+# colnames(food)
+  food<-food[,-7]
+  food$Area<-as.character(food$Area)
+  food<-food[food$Area!="China",]
+##dacstfood<-dcast(food,Area+Year~Item+Element+Unit)
+##dacstfood<-dcast(food,Area+Year~Item+Element+Unit,as.numeric)
+##head(food)
+##food[54,]
+##food[53,]
+##ls()
+##head(meltfood)
+##rm(meltfood)
+##dacstfood<-dcast(food,Area+Year~Item+Element+Unit)
+##head(dacstfood)
+##value(1)
+##values(1)
+##round(1)
+##round(2.3)
+##dacstfood<-dcast(food,Area+Year~Item+Element+Unit,round)
+
+##############################################################
+#							     #
+#							     #
+#                        数据格式处理			     #
+#							     #
+#							     #
+##############################################################
+  dacstfood<-dcast(food,Area+Year~Item+Element+Unit,mean)
+# colnames(dacstfood)
+# head(dacstfood)
+# nrow(dacstfood)
+##ls()
+##colname<-colnames(dcastfood)
+  colname<-colnames(dacstfood)
+##colname[grep(colname,'%Population%')]
+##colname[grep(x=colname,pattern='%Population%')]
+##colname[grep(x=colname,pattern='%population%')]
+##head(food)"
+##colname[grep(x=colname,pattern='.population.')]
+##colname[grep(x=colname,pattern=".population.")]
+##colname[grep(x=colname,pattern="population")]
+# colname[grep(x=colname,pattern="Population")]
+# grep(x=colname,pattern="Population")
+##colnames(dacstfood)[1052]<-Population
+  colnames(dacstfood)[1052]<-"Population"
+##renjun<-function(x){
+##if
+##}
+##if("asfdfasd"==".fd.")
+##{}
+##"asfdfasd"==".fd."
+##"asfdfasd"=="%fd%"
+##as.logical(grep(x="asfdfasd",pattern="fd"))
+##renjun<-function(x){
+##if(grep(colname))}
+##for(i in 1:length(colname)){
+##if(!grep("capita",colname[i])){
+##dacstfood[,i]<-dacstfood[,i]/dacstfood[,1052]}
+##colname[1:5]
+##for(i in 3:length(colname)){
+##if(!grep("capita",colname[i])){
+##dacstfood[,i]<-dacstfood[,i]/dacstfood[,1052]}
+##}
+##for(i in 3:length(colname)){
+##if(!as.logical(grep(pattern="capita",x=colname))){
+##dacstfood[,i]<-dacstfood[,i]/dacstfood[,1052]}
+##}
+##for(i in 3:length(colname)){
+##}
+##!as.logical(grep(pattern="capita",x=colname[i]))
+##!as.logical(grep(pattern="capita",x=colname[4]))
+##as.logical(grep(pattern="capita",x=colname[4]))
+##grep(pattern="capita",x=colname[4])
+##grep(pattern="capita",x=colname)
+  capitalized<-grep(pattern="capita",x=colname)
+##for(i in 3:length(colname)){
+##}{
+  for(i in 3:ncol(dacstfood)){
+    if(!sum(grep(x=colname[i],pattern="capita"))){
+      dacstfood[,i]<-dacstfood[,i]/dacstfood[,1052]
+    }
+  }
+  dacstfood<-dacstfood[,-1052]
+##scale(dacstfood)
+##dcastfood<-scale(dacstfood)
+  mean(is.na(dacstfood))
+  mean(is.na(dacstfood[,-c(1,2)]))
+  dacstfood[is.na(dacstfood)]<-0
+  mean(is.na(dacstfood[,-c(1,2)]))
+##scaleddacstfood<-cbind(dacstfood[,1:2],scale(dacstfood[,3:length(colname)]))
+##dacstfood[1:5,1:4]
+# dacstfood[1:5,1:10]
+# summary(dacstfood$Area)
+##table(dacstfood$Area)
+##leveals(dacstfood$Area)
+##levels(dacstfood$Area)
+# summary(dacstfood$Year)
+# table(dacstfood$Year)
+##levels(dacstfood$Area)<-unique(as.character(dacstfood$Area))
+##class(dacstfood$Area)
+  dacstfood$Area<-as.character(dacstfood$Area)
+# class(dacstfood[,1])
+# class(dacstfood[,2])
+# class(dacstfood[,4])
+# summary(dacstfood$Area)
+##table(dacstfood$Area)
+##length(table(dacstfood$Area))
+##ls()
+##rm("capitalized")
+##rm("colname")
+##ls()
+##rm("i")
+##ls()
+##rholist<-list()
+##year<-unique(dacstfood)
+##year<-unique(dacstfood$Yera)
+##year
+##year<-unique(dacstfood$Year)
+##year
+##for(y in 1:length(year)){
+##rhomat<-matrix()
+##}
+##rhomat
+##for(y in 1:length(year)){
+##rhomat<-matrix(rep(0,183*183),nrow=183)
+##}
+##rhomat
+##ls()
+##levels(food$A)
+##for(y in 1:length(year)){
+##rhomat<-matrix(rep(0,183*183),nrow=183)
+##for(a in 1:length(dacstfood$Area[dacstfood$Year==year[y]])){
+##for(b in 1:length(dacstfood$Area[dacstfood$Year==year[y]])){
+##if(a!=b){
+##for(y in 1:length(year)){
+##rhomat<-matrix(rep(0,183*183),nrow=183)
+##for(a in 1:length(dacstfood$Area[dacstfood$Year==year[y]])){
+##for(b in 1:length(dacstfood$Area[dacstfood$Year==year[y]])){
+##if(a>b){
+##summary(dacstfood[,7])
+##summary(dacstfood[,c(round(runif(10)*length(colname)))])
+##summary(dacstfood[,c(round(runif(10)*length(colname)))])
+##summary(dacstfood[,c(round(runif(10)*length(colname))])
+##summary(dacstfood[,c(round(runif(10)*length(colname))]
+##summary(dacstfood[,c(round(runif(10)*length(colname)))]
+##)_
+##summary(dacstfood[,c(round(runif(10)*length(colname)))]
+##)
+##c(round(runif(10)*length(colname)))
+##ls()
+##summary(dacstfood[,c(round(runif(10)*ncol(dacstfood)))])
+##summary(dacstfood$Area)
+##unique(dacstfood$Area)
+##sort(dacstfood)[-5:-1]
+##table(round(dacstfood[,c(round(runif(10)*ncol(dacstfood)))]))
+##table(round(dacstfood[,c(round(runif(1)*ncol(dacstfood)))]))
+# table(round(dacstfood[,c(round(runif(1)*ncol(dacstfood)))]))
+##table(round(dacstfood[,c(round(runif(1)*ncol(dacstfood)))]))
+##table(round(dacstfood[,c(round(runif(1)*ncol(dacstfood)))]))
+##table(round(dacstfood[,c(round(runif(1)*ncol(dacstfood)))]))
+##ls()
+##show(1)
+##chouyang<-function(){
+##table(round(dacstfood[,c(round(runif(1)*ncol(dacstfood)))]))
+##}
+##chouyang()
+##ls()
+##mean(is.na(dacstfood))
+##ls()
+##rholist
+##y
+##year
+##nrow(dacstfood)
+##ncol(dacstfood)
+##tdacst<-t(dacstfood)
+##head(tdacst)
+##ls()
+##tdbyyear<-list()
+##for(y in 1:length(year)){
+##}
+##byyear<-function(x){tdbyyear[x[2]==year]<-x}
+##byyear<-function(x){tdbyyear[x[2]==year]<-cbind(tdbyyear[x[2]==year],x)}
+##sapply(tdacst,byyear)
+##sapply(tdacst,byyear,simplify=F,USE.NAMES=F)
+##tdacst[,5][2]
+##tdacst[,5][2]==year
+##which(tdacst[,5][2]==year)
+##byyear<-function(x){tdbyyear[which(x[2]==year)]<-cbind(tdbyyear[which(x[2]==year)],x)}
+##sapply(tdacst,byyear,simplify=F,USE.NAMES=F)
+##tdbyyear
+##ls()
+##tdbyyear<-split(dacstdood,Year)
+##tdbyyear<-split(dacstfood,Year)
+  tdbyyear<-split(dacstfood,dacstfood$Year)
+##tdbyyear<-split(dacstfood,dacstfood$Year)
+##head(tdbyyear[1])
+##nrow(tdbyyear[1])
+##ncol(tdbyyear[1])
+# class(tdbyyear[1])
+# class(tdbyyear[[1]])
+# ncol(tdbyyear[[1]])
+# nrow(tdbyyear[[1]])
+# length(tdbyyear)
+  for(y in 1:53){
+    tdbyyear[[y]]<-t(tdbyyear[[y]])
+  }
+# ncol(tdbyyear[[1]])
+# summary(tdbyyear[[1]])
+# colnames(tdbyyear[[1]])
+# head(tdbyyear[[1]])
+  for(y in 1:53){
+    tdbyyear[[y]]<-tdbyyear[[y]][-2,]
+  }
+# head(tdbyyear[[1]])
+  for(y in 1:53){
+    colnames(tdbyyear[[y]])<-tdbyyear[[y]][1,]
+  }
+  for(y in 1:53){
+    tdbyyear[[y]]<-tdbyyear[[y]][-1,]
+  }
+# head(tdbyyear[[1]])
+##write.csv(tdbyyear[[1]],file="/home/hans/R/firstyear.csv")
+##ls()
+##rm(rholist)
+##rm(rhomat)
+##rm(chouyang)
+##byyear
+##rm(byyear)
+##rm(foodsum)
+##rm(y)
+##summary(tdbyyear\)
+##summary(tdbyyear)
+##name(tdbyyear[1])
+##names\(tdbyyear[1])
+##names(tdbyyear[1])
+##ls()
+##rm(food)
+##ls()
+##rm(year)
+##rm(tdacst)
+##ls()
+##  library(infotheo)
+##############################################################
+#							     #
+#							     #
+#                按年份分组，相关性（互信息）计算	     #
+#							     #
+#							     #
+##############################################################
+  Area<-unique(dacstfood[,1])
+  Narea<-length(Area)
+##  Rlist<-list()
+##  Rmat0<-matrix(nrow=length(Area),ncol=length(Area),dimnames=list(Area,Area))
+  Rfram<-c()
+  Rframe<-c()
+  for(a in 1:Narea){
+    Rframe<-c(Rframe,rep(Area[a],Narea-a))}
+  for(a in 1:(Narea-1)){
+    Rfram<-c(Rfram,Area[(a+1):Narea])}
+  Rframe<-cbind(Rframe,Rfram)
+  library(infotheo)
+  Rframe<-as.data.frame(Rframe)
+  for(y in 1:53){
+    i=0
+    ##Rmat<-Rmat0
+    for(a in 1:Narea){
+      for(b in 2:Narea){
+        if(b>a){
+          i=i+1
+          if(sum(Area[a]==colnames(tdbyyear[[y]]))&sum(Area[b]==colnames(tdbyyear[[y]]))){
+            Rframe[i,y+2]<-mutinformation(tdbyyear[[y]][,Area[a]],tdbyyear[[y]][,Area[b]])
+          }
+        }
+      }
+    }
+    print(y)
+    print(Sys.time())
+    ##Rlist[[y]]<-Rmat
+}
+##  for(y in 1:53){
+##    i=1
+##    for(a in 1:Narea){	
+##      for(b in 1:Narea){
+##        if(b>a){
+##          i=i+1
+##          Rframe[i,y+2]<-Rlist[[y]][a,b]
+##        }
+##      }
+##    }
+##    print(y)
+##    print(Sys.time())
+##  }
+  colnames(Rframe)<-c("Area1","Area2",1961:2013)
+
+##Rframe<-read.csv("E://Debian/R.csv",stringsAsFactors = F,header = T,sep=",")
+##Rframe<-Rframe[,-1]
+
+##Rframe0<-read.csv("E://Debian/Area.csv",stringsAsFactors = F,header = T,sep=",")
+##Rframe0<-Rframe0[,-1]
+
+  y0<-seq(2,55,by=4)
+
+  for(y in 1:(length(y0)-1)){
+    Rframe[,(55+y)]<-as.numeric(apply(Rframe[,((y0[y]+1):y0[(y+1)])],1,mean))
+    colnames(Rframe)[55+y]<-paste(colnames(Rframe)[y0[y]+1],colnames(Rframe)[y0[y  +1]],sep="-")
+  }
+
+  colnames(Rframe)<-gsub(x=colnames(Rframe),pattern = "X",replacement = "")
+
+  for(y in 1:(length(y0)-1)){
+    Rframe0[,(55+y)]<-as.numeric(apply(Rframe0[,((y0[y]+1):y0[(y+1)])],1,mean))
+  }
+
+  colnames(Rframe0)<-colnames(Rframe)
+
+  Rframe0<-Rframe[,c(1:2,56:68)]
+  Rframe0[is.na(Rframe0)]<-0
+  fun<-function(x){return(x/max(x))}
+  Rframe0[3:15]<-sapply(Rframe0[,3:15],fun)
+##Rframe00<-Rframe0[,c(1:2,56:68)]
+##Rframe00<-na.omit(Rframe00)
+##Rframe00[,3:15]<-scale(Rframe00[,3:15])
+##Rframe00[Rframe00<0]<-0
+##Rframe00[Rframe00<mean(Rframe00[,3:15],na.rm = T)]<-0
+
+##Rlist<-list()
+
+##for(y in 1:13){
+##  Rlist[[y]]<-data.frame(Rframe00[,c(1,2,2+y)])
+##}
+
+##for(y in 1:13){
+##  write.table(Rframe00[,c(1,2,2+y)],file = paste("E://Debian/R",".csv",sep = as.character(y)),col.names = c("source","target","weight"),row.names = F,sep=",")
+##}
+
+##R1<-graph.data.frame(read.csv("E://Debian/R1.csv",header = T,stringsAsFactors = F),directed = F)
+##R13<-graph.data.frame(read.csv("E://Debian/R13.csv",header = T,stringsAsFactors = F),directed = F)
+
+##############################################################
+#							     #
+#							     #
+#                  可视化(SNA,特征向量中心度)		     #
+#							     #
+#							     #
+##############################################################
+  library(igraph)
+  for(y in 1:13){
+    Links<-data.frame(Rframe0[,c(1,2,y+2)])
+    colnames(Links)<-c("source","target","value")
+    t<-tail(Links[order(Links$value),],n = 100)
+    graph<-graph.data.frame(t,directed = F)
+    V(graph)$size<-0.1
+    dev.new()
+    plot(graph)
+    print(colnames(Rframe0)[y+2])
+    print(head(sort(page.rank(graph)$vector,decreasing = T),n = 10))
+  }
